@@ -22,61 +22,44 @@ npm run install:husky
 npm start
 ```
 
-✨ Optional: [Enable autopublish](#q-how-do-i-enable-auto-publish-to-github-pages) to get your site deployed on GitHub Pages on every commit you push.
+Leer nodos
+--> document.getElementById('id')
+--> document.getElementByTagName('div') # Te entrega todas las etiquetas de la pagina
+--> parent.getElementByTagName('input') # Te entrega todas las etiquetas hijos del nodo seleccionado
+--> parent.getElementByClassName('class')
+--> document.querySelector('id' or 'class' or 'tag')
+-- document.querySelectorAll('id' or 'class' or 'tag') # Devuleve un nodeList
 
-#### Optional install using Yarn:
+Convertir nodeList a array
+--> [...nodeList]
 
-```sh
-# Bootstrap the template into a new folder called `my-app`
-npx create-snowpack-app my-app --template snowpack-template-tailwind --use-yarn
+Crear nodos
+--> document.createElement('tag')
+--> document.createTextNode('texto')
 
-# Enable Prettier on git-commit
-cd my-app
-yarn install:husky
-```
+Agregar nodos
+--> parentElement.appendChild()
+--> parentElement.append() # No es soportado por internet explorer
+--> parentElement.insertBefore()
+--> parentElement.insertAdjacentElement('beforebegin',node)
+	['beforebegin', 'afterbegin', 'beforeend', 'afterend']
+  
+	
+  Otras formas de agregar
+  Estos elementos pueden tener problemas de seguridad, se puede inyectar Html
+  maligno XSS, Evitar que usarlo cuando el usuario pueda escribir
+  --> node.outerHTML #Te devuleve HTML en forma de texto "<h1>hola</h1>"
+  --> node.innerHTML #Te entrega el valor del nodo "hola", tambien le puedes
+      asignar nuevos valores nodo.innerHTML = "HOLA 2"
 
-## Features
 
-- Snowpack, of course.
-- Tailwind.
-- Prettier.
-- Force prettier on git-commit.
-- Autopublish on Github Pages.
-
-### Q: How do I enable auto publish to GitHub Pages?
-
-1. Update the value of `homepage` in `package.json`. It should look like `https://<your-username>.github.io/<your-repo-name>` (no trailing slash).
-1. Push your changes into a new GitHub repository.
-1. You should see an Action running on `https://github.com/<your-username>/<repo-name>/actions`
-1. Make sure to [enable GitHub pages for your repo](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#choosing-a-publishing-source) and select the `gh-pages` branch
-1. Give GH Pages some minutes, your site should be live on `https://<your-username>.github.io/<your-repo-name>`
-1. Enjoy :)
-
-### Q: How do I disable auto publish to GitHub Pages?
-
-Remove the `.github/workflows/publish.yml` file.
-
-### Q: How do I check my code syntax (Prettier) on git-commit?
-
-Run `npm run install:husky`.
-
-## Available Scripts
-
-### npm start
-
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### npm run build
-
-Builds a static copy of your site to the `build/` folder.
-Your app is ready to be deployed!
-
-**For the best production performance:** Add a build bundler plugin like [@snowpack/plugin-webpack](https://github.com/snowpackjs/snowpack/tree/master/plugins/plugin-webpack) or [snowpack-plugin-rollup-bundle](https://github.com/ParamagicDev/snowpack-plugin-rollup-bundle) to your `snowpack.config.json` config file.
-
-### Q: What about Eject?
-
-No eject needed! Snowpack guarantees zero lock-in, and CSA strives for the same.
+Eliminar nodos del Dom
+--> parentElement.removeChild(nodoAEliminar)
+--> nodoAEliminar.remove() #No es soportado por internet explorer
+--> document.remove()
+--> document.replaceChild()
+  
+  Formas de identificar al nodo padre
+  --> nodoAEliminar.parentElement
+  Identicar el nodo padre y aliminar el nodo hijo
+  --> nodoAEliminar.parentElement.removeChild(nodoAEliminar)
