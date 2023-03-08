@@ -21,7 +21,7 @@ npm run install:husky
 # Start the development server
 npm start
 ```
-
+```
 Leer nodos
 --> document.getElementById('id')
 --> document.getElementByTagName('div') # Te entrega todas las etiquetas de la pagina
@@ -63,3 +63,4 @@ Eliminar nodos del Dom
   --> nodoAEliminar.parentElement
   Identicar el nodo padre y aliminar el nodo hijo
   --> nodoAEliminar.parentElement.removeChild(nodoAEliminar)
+```
